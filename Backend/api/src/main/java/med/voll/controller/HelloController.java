@@ -1,16 +1,13 @@
 package med.voll.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/hello")
-
 public class HelloController {
 
-    @GetMapping
-    public String hello(){
-        return "Hello Word";
+    @GetMapping("/hello")
+    public String sayHello() {
+        return "¡aa Hola desde Spring Boot! aaa";
     }
 }
