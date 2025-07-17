@@ -1,12 +1,12 @@
 package med.voll.medico;
 
-import med.voll.direccion.Direccion;
+import med.voll.direccion.DatosDireccion;
 
-public record DatosRegistroMeidco(
+public record DatosRegistroMedico(
         String nombre,
         String email,
         String documento,
         Especialidad especialidad,
-        Direccion direccion
+        DatosDireccion direccion
 ) {
 }
