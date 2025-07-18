@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import med.voll.direccion.Direccion;
 
-@Table(name = "medico")
+@Table(name = "medicos")
 @Entity(name="Medico")
 @Getter
 @NoArgsConstructor
@@ -16,6 +16,7 @@ public class Medico {
     private Long id;
     private String nombre;
     private String email;
+    private String telefono;
     private String documento;
 
     @Enumerated(EnumType.STRING)
@@ -28,6 +29,7 @@ public class Medico {
         this.id = null;
         this.nombre = datos.nombre();
         this.email = datos.email();
+        this.telefono = datos.telefono();
         this.documento = datos.documento();
         this.especialidad = datos.especialidad();
         this.direccion = new Direccion(datos.direccion());
