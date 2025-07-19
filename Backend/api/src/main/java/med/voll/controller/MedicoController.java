@@ -6,6 +6,9 @@ import med.voll.medico.DatosRegistroMedico;
 import med.voll.medico.Medico;
 import med.voll.medico.MedicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,14 +34,8 @@ public class MedicoController {
 
     // Maneja solicitudes HTTP GET hacia la URL "/medicos"
     @GetMapping
-    public List<DatosListaMedico> listar() {
-        // 1. Obtiene todos los registros de médicos desde la base de datos
-        // 2. Convierte la lista de entidades Medico a una lista de DTOs DatosListaMedico
-        //    usando programación funcional (stream y map)
-        // 3. Retorna la lista transformada
-        return repository.findAll().stream()
-                .map(DatosListaMedico::new) // Transforma cada entidad Medico en un DTO DatosListaMedico
-                .toList();                  // Convierte el Stream a una List
+    public Page<DatosListaMedico> listar(@PageableDefault(size = 10,sort={"nombre"}) Pageable paginacion) {
+        return repository.findAll(paginacion).map(DatosListaMedico::new);
     }
 
 }
