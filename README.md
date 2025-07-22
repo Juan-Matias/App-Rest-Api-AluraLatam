@@ -54,7 +54,7 @@ Para correr el proyecto backend:
 ```bash
 ./mvnw clean install
 ./mvnw spring-boot:run
-
+```
 
 ```mermaid
 classDiagram
