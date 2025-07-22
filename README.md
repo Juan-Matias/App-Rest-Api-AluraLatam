@@ -1,28 +1,28 @@
-# Medicina Alura Latam
+# Medicina Alura Latam ![Java Version](https://img.shields.io/badge/Java-17-blue) ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.1-green)
+
+## Estado del Proyecto
+🚧 En desarrollo (v0.1.0)  
+✅ Funcionalidades completadas: CRUD Médicos  
+⏳ Próximas features: Autenticación JWT, Sistema de Citas
 
 ## Descripción
-
-Este es un trabajo realizado en Alura Latam en el cual vamos a ir siguiendo el curso paso a paso, y lo vamos a ir documentando como modo de aprendizaje y práctica.  
-Este proyecto está 100% enfocado en el backend.
+Proyecto backend para gestión médica desarrollado durante el curso de Alura Latam, utilizando Spring Boot 3 y Java 17.
 
 ##
 
-## ¿Qué es Spring Boot y por qué utilizarlo?
+## Stack Tecnológico
+| Capa           | Tecnologías              |
+|----------------|--------------------------|
+| Backend        | Spring Boot 3, Java 17   |
+| Persistencia   | MySQL, Hibernate, Flyway |
+| Herramientas   | Lombok, Maven, Insomnia  |
 
-Spring Boot es un framework basado en Spring que facilita la creación rápida de aplicaciones Java robustas y listas para producción, con configuración automática, servidor embebido y muchas herramientas listas para usar.
-
-##
-
-## Herramientas utilizadas
-
-- **Spring Boot 3**: Framework para desarrollo backend rápido y confiable en Java.
-- **Java 17**: Versión LTS con mejoras en rendimiento, seguridad y nuevas características.
-- **Lombok**: Reduce código repetitivo generando getters, setters, constructores, etc.
-- **MySQL / Flyway**: MySQL como base de datos relacional; Flyway para migraciones y versionado de esquema.
-- **JPA / Hibernate**: API y framework para mapeo objeto-relacional (ORM).
-- **Maven**: Herramienta para gestión de proyectos y dependencias.
-- **Insomnia**: Cliente REST para probar y depurar APIs.
-- **Figma**: Herramienta para diseño y prototipado UI/UX.
+## Configuración Básica
+```properties
+# application.properties
+spring.datasource.url=jdbc:mysql://localhost:3306/clinica
+spring.jpa.hibernate.ddl-auto=validate
+```
 
 ##
 
