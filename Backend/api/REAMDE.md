@@ -1,9 +1,10 @@
 ```mermaid
 classDiagram
-    direction TB
+    direction LR
 
     %% ==== CONTROLADORES ====
     class MedicoController {
+        <<Controller>>
         +registrar(DatosRegistroMedico)
         +listar(Pageable): Page<DatosListaMedico>
         +actualizar(DatosActualizacionMedico)
@@ -12,11 +13,18 @@ classDiagram
 
     %% ==== CONFIGURACIÓN ====
     class corsConfiguration {
+        <<Configuration>>
         +addCorsMappings(CorsRegistry)
+    }
+
+    %% ==== APLICACIÓN ====
+    class ApiApplication {
+        <<SpringBootApplication>>
     }
 
     %% ==== ENTIDAD PRINCIPAL ====
     class Medico {
+        <<Entity>>
         - Long id
         - Boolean activo
         - String nombre
@@ -31,6 +39,7 @@ classDiagram
 
     %% ==== ENUM ====
     class Especialidad {
+        <<Enumeration>>
         ORTOPEDIA
         CARDIOLOGIA
         GINECOLOGIA
@@ -39,6 +48,7 @@ classDiagram
 
     %% ==== EMBEBIDA ====
     class Direccion {
+        <<Embeddable>>
         - String calle
         - String numero
         - String complemento
@@ -51,11 +61,13 @@ classDiagram
 
     %% ==== REPOSITORY ====
     class MedicoRepository {
+        <<Repository>>
         +findAllByActivoTrue(Pageable): Page<Medico>
     }
 
     %% ==== DTOs ====
     class DatosRegistroMedico {
+        <<Record>>
         +String nombre()
         +String email()
         +String telefono()
@@ -64,7 +76,16 @@ classDiagram
         +DatosDireccion direccion()
     }
 
+    class DatosActualizacionMedico {
+        <<Record>>
+        +Long id()
+        +String nombre()
+        +String telefono()
+        +DatosDireccion direccion()
+    }
+
     class DatosListaMedico {
+        <<Record>>
         +Long id
         +String nombre
         +String email
@@ -72,14 +93,8 @@ classDiagram
         +Especialidad especialidad
     }
 
-    class DatosActualizacionMedico {
-        +Long id
-        +String nombre
-        +String telefono
-        +DatosDireccion direccion
-    }
-
     class DatosDireccion {
+        <<Record>>
         +String calle()
         +String numero()
         +String complemento()
@@ -89,27 +104,23 @@ classDiagram
         +String estado()
     }
 
-    %% ==== APLICACIÓN ====
-    class ApiApplication
+    %% ==== RELACIONES MEJORADAS ====
+    MedicoController --> MedicoRepository : "usa"
+    MedicoController ..> DatosRegistroMedico : "procesa"
+    MedicoController ..> DatosActualizacionMedico : "procesa"
+    MedicoController ..> DatosListaMedico : "genera"
 
-    %% ==== RELACIONES ====
-    MedicoController --> MedicoRepository : usa
-    MedicoController --> DatosRegistroMedico
-    MedicoController --> DatosListaMedico
-    MedicoController --> DatosActualizacionMedico
+    Medico *-- Direccion : "contiene"
+    Medico --> Especialidad : "tiene"
+    Medico ..> DatosRegistroMedico : "se construye con"
+    Medico ..> DatosActualizacionMedico : "actualiza con"
 
-    Medico --> Direccion : @Embedded
-    Medico --> Especialidad : enum
-    Medico --> DatosRegistroMedico : constructor usa
-    Medico --> DatosActualizacionMedico : método usa
+    Direccion ..> DatosDireccion : "mapea desde"
 
-    Direccion --> DatosDireccion : constructor y actualización
+    DatosListaMedico ..|> Medico : "transforma a"
 
-    DatosListaMedico --> Medico : constructor recibe
+    MedicoRepository "1" --> "many" Medico : "persiste"
 
-    MedicoRepository --> Medico : JpaRepository
-
-    ApiApplication --> Medico : importa
-    ApiApplication --> Direccion : importa
-
+    ApiApplication ..> Medico : "incluye"
+    ApiApplication ..> Direccion : "incluye"
 ```
