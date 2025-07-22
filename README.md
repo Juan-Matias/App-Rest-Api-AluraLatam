@@ -177,7 +177,7 @@ classDiagram
 
     DatosListaMedico ..|> Medico : "transforma a"
 
-    MedicoRepository "1" --> "many" Medico : "persiste"
+    MedicoRepository "1" --> "M" Medico : "persiste"
 
     ApiApplication ..> Medico : "incluye"
     ApiApplication ..> Direccion : "incluye"
