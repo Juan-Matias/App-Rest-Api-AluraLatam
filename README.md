@@ -5,13 +5,13 @@
 Este es un trabajo realizado en Alura Latam en el cual vamos a ir siguiendo el curso paso a paso, y lo vamos a ir documentando como modo de aprendizaje y práctica.  
 Este proyecto está 100% enfocado en el backend.
 
----
+##
 
 ## ¿Qué es Spring Boot y por qué utilizarlo?
 
 Spring Boot es un framework basado en Spring que facilita la creación rápida de aplicaciones Java robustas y listas para producción, con configuración automática, servidor embebido y muchas herramientas listas para usar.
 
----
+##
 
 ## Herramientas utilizadas
 
@@ -31,7 +31,7 @@ Spring Boot es un framework basado en Spring que facilita la creación rápida d
 Las versiones LTS (Long Term Support) son versiones con soporte extendido y actualizaciones de seguridad por varios años.  
 Se recomienda usarlas en producción para mayor estabilidad.
 
----
+##
 
 ## Nomenclatura de comentarios de Git
 
@@ -45,7 +45,7 @@ Se recomienda usarlas en producción para mayor estabilidad.
 | `test:`   | Añadir o mejorar pruebas                           |
 | `chore:`  | Tareas menores (actualizar dependencias, config) |
 
----
+##
 
 ## Instalación y Ejecución
 
