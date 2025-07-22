@@ -24,7 +24,7 @@ Spring Boot es un framework basado en Spring que facilita la creación rápida d
 - **Insomnia**: Cliente REST para probar y depurar APIs.
 - **Figma**: Herramienta para diseño y prototipado UI/UX.
 
----
+##
 
 ## Versiones LTS / ¿Qué son?
 
